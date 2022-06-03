@@ -16,6 +16,7 @@ public class Album {
     private String titulo;
     private Date fechalanzamiento;
     private int conteolikes;
+    private int cantidadcanciones;
     private ArrayList <Canciones> cancionesalbum=new ArrayList();
 
     public Album() {
@@ -25,6 +26,7 @@ public class Album {
         this.titulo = titulo;
         this.fechalanzamiento = fechalanzamiento;
         this.conteolikes = conteolikes;
+        this.cantidadcanciones = cantidadcanciones;
     }
 
     public String getTitulo() {
@@ -57,6 +59,14 @@ public class Album {
 
     public void setCancionesalbum(ArrayList<Canciones> cancionesalbum) {
         this.cancionesalbum = cancionesalbum;
+    }
+
+    public int getCantidadcanciones() {
+        return cantidadcanciones;
+    }
+
+    public void setCantidadcanciones(int cantidadcanciones) {
+        this.cantidadcanciones = cantidadcanciones;
     }
 
     @Override
