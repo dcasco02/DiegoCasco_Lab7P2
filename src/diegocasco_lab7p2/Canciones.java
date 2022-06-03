@@ -14,6 +14,7 @@ import java.util.Date;
 public class Canciones {
     private String nombre;
     private Date fechalanzamiento;
+    private double duracion;
 
     public Canciones() {
     }
@@ -21,6 +22,7 @@ public class Canciones {
     public Canciones(String nombre, Date fechalanzamiento) {
         this.nombre = nombre;
         this.fechalanzamiento = fechalanzamiento;
+        this.duracion = duracion;
     }
 
     public String getNombre() {
@@ -37,6 +39,14 @@ public class Canciones {
 
     public void setFechalanzamiento(Date fechalanzamiento) {
         this.fechalanzamiento = fechalanzamiento;
+    }
+
+    public double getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(double duracion) {
+        this.duracion = duracion;
     }
 
     @Override
