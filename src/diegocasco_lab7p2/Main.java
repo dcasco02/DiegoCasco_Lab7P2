@@ -643,8 +643,9 @@ public class Main extends javax.swing.JFrame {
         String nombre=CancionNombre.getText();
         Date fechalanzamiento = DC_LancamientoCancion.getDate();
         double dura =Double.valueOf(Duracionrola.getText());
-        DefaultListModel modelo = (DefaultListModel)jList2.getModel();
+        DefaultListModel modelo = (DefaultListModel)JL_canciones.getModel();
         modelo.addElement(new Canciones(nombre,fechalanzamiento,dura));
+        Cancion.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
