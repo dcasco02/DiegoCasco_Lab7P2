@@ -19,7 +19,7 @@ public class Canciones {
     public Canciones() {
     }
 
-    public Canciones(String nombre, Date fechalanzamiento) {
+    public Canciones(String nombre, Date fechalanzamiento, double duracion) {
         this.nombre = nombre;
         this.fechalanzamiento = fechalanzamiento;
         this.duracion = duracion;
