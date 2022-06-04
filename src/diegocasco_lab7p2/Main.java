@@ -5,8 +5,14 @@
  */
 package diegocasco_lab7p2;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -568,18 +574,58 @@ public class Main extends javax.swing.JFrame {
         int edad = Integer.valueOf(TF_edadRegisto.getText());
         String tipocuenta= CB_Tipo.getSelectedItem().toString();
         if(tipocuenta=="Cliente"&& edad>12){
-            usuarios.add(new Usuarios(usuario, password, edad, tipocuenta));
-            tf_usuarioLogin.setText("");
-             PF_Registro.setText("");
-             TF_edadRegisto.setText("");
-            Registro.dispose();
+              try {
+                  usuarios.add(new Usuarios(usuario, password, edad, tipocuenta));
+                  tf_usuarioLogin.setText("");
+                  PF_Registro.setText("");
+                  TF_edadRegisto.setText("");
+                  File f=null;
+                  FileWriter fw=null;
+                  BufferedWriter bw=null;
+                  try {
+                      //procesar
+                      f=new File("./Usuarios.txt");
+                      //fw= new FileWriter(f);//si No existe lo crea,si ya existe lo sobreescribe
+                      fw=new FileWriter(f, true);//si no existe lo crea y si existe agrega al final
+                      bw=new BufferedWriter(fw);
+                      bw.write(TF_Usuario.getText()+hoy+CB_Tipo.getSelectedItem().toString());
+                      bw.newLine();
+                      bw.flush();
+                  } catch (Exception e) {
+                  }
+                  bw.close();
+                  fw.close();
+                  Registro.dispose();
+              } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+              }
         }else if(tipocuenta=="Artista"&& edad>18){
-            String nombreartista = JOptionPane.showInputDialog("Ingrese el nombre Artistico: ");
-            usuarios.add(new Artista(nombreartista, usuario, password, edad, tipocuenta));
-            tf_usuarioLogin.setText("");
-             PF_Registro.setText("");
-             TF_edadRegisto.setText("");
-            Registro.dispose();
+          try {
+              String nombreartista = JOptionPane.showInputDialog("Ingrese el nombre Artistico: ");
+              usuarios.add(new Artista(nombreartista, usuario, password, edad, tipocuenta));
+              tf_usuarioLogin.setText("");
+              PF_Registro.setText("");
+              TF_edadRegisto.setText("");
+              Registro.dispose();
+              File f=null;
+              FileWriter fw=null;
+              BufferedWriter bw=null;
+              try {
+                  //procesar
+                  f=new File("./Usuarios.txt");
+                  //fw= new FileWriter(f);//si No existe lo crea,si ya existe lo sobreescribe
+                  fw=new FileWriter(f, true);//si no existe lo crea y si existe agrega al final
+                  bw=new BufferedWriter(fw);
+                  bw.write(TF_Usuario.getText()+hoy+CB_Tipo.getSelectedItem().toString());
+                  bw.newLine();
+                  bw.flush();
+              } catch (Exception e) {
+              }
+              bw.close();
+              fw.close();
+          } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }else{
             JOptionPane.showMessageDialog(Registro,"El Usuario no puede ser menor de 12 y el artista no puede ser menor de 18");
         }
